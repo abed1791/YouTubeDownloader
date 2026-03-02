@@ -1,4 +1,5 @@
-#05
+#06
+#  فتح مجلد التحميل
 #  بعد إصلاح الفيديو بدون صوت
 # ✅ الميزات بعد هذا الإصلاح
 
@@ -165,9 +166,9 @@ class YouTubeDownloader(ctk.CTk):
             selected = self.select_best_format(max_size)
 
         ydl_opts = {
-            "format": selected[1] if selected else "bestvideo+bestaudio/best",  # دمج فيديو + صوت
+            "format": "best[ext=mp4]+bestaudio[ext=m4a]/best",  # دمج فيديو + صوت دائمًا
             "outtmpl": os.path.join(self.save_path, "%(title)s.%(ext)s"),
-            "merge_output_format": "mp4",  # دمج الفيديو مع الصوت
+            "merge_output_format": "mp4",
             "progress_hooks": [self.progress_hook],
             "ffmpeg_location": "./ffmpeg.exe",
             "ignoreerrors": True,
@@ -178,7 +179,9 @@ class YouTubeDownloader(ctk.CTk):
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([self.url])
 
-        self.log("Download finished.")
+        self.log("✅ Download finished.")
+        # فتح مجلد التحميل بعد انتهاء التحميل
+        subprocess.Popen(f'explorer "{self.save_path}"')
 
     # ================= MP3 Download =================
     def start_mp3_download(self):
@@ -204,6 +207,7 @@ class YouTubeDownloader(ctk.CTk):
             ydl.download([self.url])
 
         self.log("MP3 extraction finished.")
+        subprocess.Popen(f'explorer "{self.save_path}"')
 
 
 # ================= Run App =================

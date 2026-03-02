@@ -1,19 +1,18 @@
-#04
-# ✅ الميزات بعد هذا الإصلاح
+# 03
+# استخدام yt-dlp كمحرك تنزيل احترافي
 
-# يعمل بدون أخطاء ANSI عند PyInstaller
+# دمج ffmpeg لمعالجة الوسائط
 
-# شريط تقدم صحيح لجميع الفيديوهات
+# التعامل مع Playlist
 
-# دعم Playlist
+# Threading لتجنب تجميد الواجهة
 
-# اختيار جودة الفيديو أو الحجم المخصص
+# progress_hooks لمراقبة التحميل
 
-# ضغط الفيديو فقط عند الحاجة
+# إدارة الملفات والمسارات
 
-# MP3 32kbps
+# تصميم GUI حديث
 
-# حفظ الاسم الأصلي للفيديو
 
 
 import os
@@ -99,7 +98,7 @@ class YouTubeDownloader(ctk.CTk):
 
         self.log("Fetching video info...")
 
-        ydl_opts = {"quiet": True, "ignoreerrors": True, "no_color": True}
+        ydl_opts = {"quiet": True, "ignoreerrors": True}
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(self.url, download=False)
@@ -137,11 +136,8 @@ class YouTubeDownloader(ctk.CTk):
 
     def progress_hook(self, d):
         if d['status'] == 'downloading':
-            try:
-                percent = float(d['_percent_str'].replace('%', '').replace('\x1b[0;94m','').replace('\x1b[0m',''))
-                self.progress.set(percent / 100)
-            except:
-                pass
+            percent = float(d['_percent_str'].replace('%', ''))
+            self.progress.set(percent / 100)
         elif d['status'] == 'finished':
             self.progress.set(1)
 
@@ -178,8 +174,7 @@ class YouTubeDownloader(ctk.CTk):
             "progress_hooks": [self.progress_hook],
             "ffmpeg_location": "./ffmpeg.exe",
             "ignoreerrors": True,
-            "noplaylist": False,
-            "no_color": True  # منع رموز ANSI
+            "noplaylist": False
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -205,8 +200,7 @@ class YouTubeDownloader(ctk.CTk):
             "progress_hooks": [self.progress_hook],
             "ffmpeg_location": "./ffmpeg.exe",
             "ignoreerrors": True,
-            "noplaylist": False,
-            "no_color": True  # منع رموز ANSI
+            "noplaylist": False
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:

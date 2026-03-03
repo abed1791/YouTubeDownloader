@@ -62,7 +62,7 @@ class App(ctk.CTk if not DND_AVAILABLE else TkinterDnD.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title("Advanced Educational Downloader & Compressor")
+        self.title("عبد الباسط Advanced Educational Downloader & Compressor")
         self.geometry("850x780")
 
         self.url = ""

@@ -56,7 +56,7 @@ class YouTubeDownloader(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("YouTube Downloader - Educational Edition")
+        self.title("عبد الباسط YouTube Downloader - Educational Edition")
         self.geometry("750x650")
 
         # متغيرات عامة

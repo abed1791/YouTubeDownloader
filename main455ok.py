@@ -72,7 +72,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("عبد الباسط Educational Downloader & Compressor")
+        self.title("عبد الباسطEducational Downloader & Compressor")
         self.geometry("950x820")
 
         self.save_path = os.path.join(os.path.expanduser("~"), "Downloads")

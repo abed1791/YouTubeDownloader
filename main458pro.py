@@ -80,7 +80,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Educational YouTube Downloader & Compressor")
+        self.title("Eng. Abdul Baset Alsulaiman Educational YouTube Downloader & Compressor")
         self.geometry("950x820")
 
         # مجلد الحفظ الافتراضي

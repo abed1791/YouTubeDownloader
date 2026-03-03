@@ -75,7 +75,7 @@ class App(ctk.CTk):
 
     def __init__(self):
         super().__init__()
-        self.title("Advanced Educational Downloader & Compressor")
+        self.title("Eng. Abdul Baset Alsulaiman Advanced Educational Downloader & Compressor")
         self.geometry("1000x950")
 
         # مسار الحفظ الافتراضي
